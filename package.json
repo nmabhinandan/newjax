@@ -1,0 +1,35 @@
+{
+  "name": "newjax",
+  "version": "1.0.0",
+  "description": "Pjax implementation in es6",
+  "main": "newjax.js",
+  "scripts": {
+    "test": "karma run"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github.com/nmabhinandan/newjax"
+  },
+  "keywords": [
+    "pjax",
+    "es6"
+  ],
+  "author": "Abhinandan <nmabhinandan@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "chai": "^3.0.0",
+    "gulp": "^3.9.0",
+    "gulp-babel": "^5.1.0",
+    "karma": "^0.12.36",
+    "karma-babel-preprocessor": "^5.2.1",
+    "karma-chai": "^0.1.0",
+    "karma-firefox-launcher": "^0.1.6",
+    "karma-mocha": "^0.1.10",
+    "karma-sinon": "^1.0.4",
+    "mocha": "^2.2.5",
+    "sinon": "^1.14.1"
+  },
+  "devDependencies": {
+    "gulp-sourcemaps": "^1.5.2"
+  }
+}
