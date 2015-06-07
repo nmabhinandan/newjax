@@ -3,14 +3,22 @@ class NewJax {
   constructor(elm) {
     this.elm = elm;
     this.anchors = elm.querySelectorAll('a');
-    this.registerEvents();
+    if (!!(window.history && window.history.pushState)) {
+      this.registerEvents();
+    }
+
   }
 
   registerEvents() {
     for (var i = 0; i < this.anchors.length; i++) {
       let el = this.anchors.item(i);
       el.addEventListener('click', (e) => {
-        e.preventDefault();
+        if (event.preventDefault) {
+          event.preventDefault()
+        } else {
+          event.returnValue = false;
+        }
+
         this.handle(el);
       });
     }
@@ -18,6 +26,7 @@ class NewJax {
 
   handle(element) {
     let elm = this.elm;
+    document.pushState
     fetch(element.href, {
       method: 'get',
       headers: {
@@ -28,5 +37,8 @@ class NewJax {
     }).then(function(body) {
       elm.innerHTML = body;
     });
+    let url = element.href.replace(/^.*\/\/[^\/]+/, '');
+
+    window.history.pushState(null, null, url);
   }
 }

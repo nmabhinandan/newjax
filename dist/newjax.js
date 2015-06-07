@@ -10,7 +10,9 @@ var NewJax = (function () {
 
     this.elm = elm;
     this.anchors = elm.querySelectorAll('a');
-    this.registerEvents();
+    if (!!(window.history && window.history.pushState)) {
+      this.registerEvents();
+    }
   }
 
   _createClass(NewJax, [{
@@ -21,7 +23,12 @@ var NewJax = (function () {
       var _loop = function () {
         var el = _this.anchors.item(i);
         el.addEventListener('click', function (e) {
-          e.preventDefault();
+          if (event.preventDefault) {
+            event.preventDefault();
+          } else {
+            event.returnValue = false;
+          }
+
           _this.handle(el);
         });
       };
@@ -34,6 +41,7 @@ var NewJax = (function () {
     key: 'handle',
     value: function handle(element) {
       var elm = this.elm;
+      document.pushState;
       fetch(element.href, {
         method: 'get',
         headers: {
@@ -44,6 +52,9 @@ var NewJax = (function () {
       }).then(function (body) {
         elm.innerHTML = body;
       });
+      var url = element.href.replace(/^.*\/\/[^\/]+/, '');
+
+      window.history.pushState(null, null, url);
     }
   }]);
 
