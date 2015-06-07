@@ -23,6 +23,9 @@ var NewJax = (function () {
       var _loop = function () {
         var el = _this.anchors.item(i);
         el.addEventListener('click', function (e) {
+          if (e.button === 0) {
+            return;
+          }
           if (event.preventDefault) {
             event.preventDefault();
           } else {

@@ -13,6 +13,9 @@ class NewJax {
     for (var i = 0; i < this.anchors.length; i++) {
       let el = this.anchors.item(i);
       el.addEventListener('click', (e) => {
+        if (e.button === 0) {
+          return;
+        }
         if (event.preventDefault) {
           event.preventDefault()
         } else {
