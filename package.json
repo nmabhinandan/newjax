@@ -4,7 +4,7 @@
   "description": "Pjax implementation in es6",
   "main": "newjax.js",
   "scripts": {
-    "test": "node_modules/karma/bin/karma start --browsers PhantomJS"
+    "test": "node_modules/karma/bin/karma start --browsers Firefox"
   },
   "repository": {
     "type": "git",
