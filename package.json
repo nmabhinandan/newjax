@@ -16,22 +16,22 @@
   ],
   "author": "Abhinandan <nmabhinandan@gmail.com>",
   "license": "MIT",
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
+    "babel-eslint": "^3.1.14",
     "chai": "^3.0.0",
+    "eslint": "^0.22.1",
     "gulp": "^3.9.0",
     "gulp-babel": "^5.1.0",
+    "gulp-sourcemaps": "^1.5.2",
     "karma": "^0.12.36",
     "karma-babel-preprocessor": "^5.2.1",
     "karma-chai": "^0.1.0",
+    "karma-chrome-launcher": "^0.1.12",
     "karma-firefox-launcher": "^0.1.6",
     "karma-mocha": "^0.1.10",
     "karma-sinon": "^1.0.4",
     "mocha": "^2.2.5",
     "sinon": "^1.14.1"
-  },
-  "devDependencies": {
-    "babel-eslint": "^3.1.14",
-    "eslint": "^0.22.1",
-    "gulp-sourcemaps": "^1.5.2"
   }
 }
