@@ -1,9 +1,13 @@
 export default class NewJax {
   constructor(elm) {
-    this.elm = elm;
-    this.anchors = elm.querySelectorAll('a');
-    if (!!(window.history && window.history.pushState)) {
-      this.registerEvents();
+    if (elm && elm.nodeType) {
+      this.elm = elm;
+      this.anchors = elm.querySelectorAll('a');
+      if (!!(window.history && window.history.pushState)) {
+        this.registerEvents();
+      }
+    } else {
+      throw new TypeError('Invalid argument passed to NewJax');
     }
   }
 
@@ -38,8 +42,10 @@ export default class NewJax {
       elm.innerHTML = body;
       return;
     });
-    let url = element.href.replace(/^.*\/\/[^\/]+/, '');
+    this.changeUrl(element.href.replace(/^.*\/\/[^\/]+/, ''));
+  }
 
+  changeUrl(url) {
     window.history.pushState(null, null, url);
   }
 }

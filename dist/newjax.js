@@ -8,10 +8,14 @@ var NewJax = (function () {
   function NewJax(elm) {
     _classCallCheck(this, NewJax);
 
-    this.elm = elm;
-    this.anchors = elm.querySelectorAll('a');
-    if (!!(window.history && window.history.pushState)) {
-      this.registerEvents();
+    if (elm && elm.nodeType) {
+      this.elm = elm;
+      this.anchors = elm.querySelectorAll('a');
+      if (!!(window.history && window.history.pushState)) {
+        this.registerEvents();
+      }
+    } else {
+      throw new TypeError('Invalid argument passed to NewJax');
     }
   }
 
@@ -20,7 +24,7 @@ var NewJax = (function () {
     value: function registerEvents() {
       var _this = this;
 
-      var _loop = function () {
+      var _loop = function (i) {
         var el = _this.anchors.item(i);
         el.addEventListener('click', function (e) {
           if (e.button === 0) {
@@ -37,26 +41,29 @@ var NewJax = (function () {
       };
 
       for (var i = 0; i < this.anchors.length; i++) {
-        _loop();
+        _loop(i);
       }
     }
   }, {
     key: 'handle',
     value: function handle(element) {
       var elm = this.elm;
-      document.pushState;
       fetch(element.href, {
         method: 'get',
         headers: {
           'X-PJAX': true
         }
       }).then(function (response) {
-        return response.text();
+        response.text();
       }).then(function (body) {
         elm.innerHTML = body;
+        return;
       });
-      var url = element.href.replace(/^.*\/\/[^\/]+/, '');
-
+      this.changeUrl(element.href.replace(/^.*\/\/[^\/]+/, ''));
+    }
+  }, {
+    key: 'changeUrl',
+    value: function changeUrl(url) {
       window.history.pushState(null, null, url);
     }
   }]);
